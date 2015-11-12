@@ -1,0 +1,75 @@
+<?php
+
+namespace Milo\SaleBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Producto
+ *
+ * @ORM\Table(name="producto")
+ * @ORM\Entity
+ */
+class Producto
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre", type="string", length=50, nullable=false)
+     */
+    private $nombre;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="precio", type="integer", nullable=false)
+     */
+    private $precio;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descripcion", type="string", length=100, nullable=true)
+     */
+    private $descripcion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="imagen", type="string", length=100, nullable=true)
+     */
+    private $imagen;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fechaFinalSubasta", type="date", nullable=false)
+     */
+    private $fechafinalsubasta;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fechaEntrega", type="date", nullable=false)
+     */
+    private $fechaentrega;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="proveedor", type="integer", nullable=false)
+     */
+    private $proveedor;
+
+
+}
+
