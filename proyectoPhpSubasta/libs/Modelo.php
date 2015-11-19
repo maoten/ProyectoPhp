@@ -7,7 +7,7 @@ class Modelo{
 	protected $username = "root";
 	 protected $password = "";
 	protected $conexion;
-	protected $nombretabla="usuario";
+	protected $nombretabla="";
 
 
 public function Modelo(){
@@ -30,9 +30,11 @@ public function obtenerNombre(){
 
 
 }
- protected function insertar($datos) {
+
+ protected function insertar($datos, $tabla) {
         $campos = "";
         $valores = "";
+        $this->nombretabla=$tabla;
 
        foreach ($datos as $campo => $valor) {
           if(strlen($campos)>0){
@@ -62,12 +64,12 @@ public function obtenerNombre(){
         }
         if(strlen($where)>0){
             $where=" WHERE ".$where;
-        }
+        
         $consulta = "DELETE FROM " . $this->nombretabla ." ".$where;
         echo $consulta;
         $result=$this-> query($consulta);
         print_r($this->conexion->errorInfo());
-
+        }
         else{
           return $this->query("DELETE FROM " . $this->nombretabla);
         }

@@ -78,7 +78,11 @@
 
 		</div>
 		
-
+<?php 
+        if (isset($_COOKIE["empresa"])) {
+        {
+      }
+       ?>
 
 <div class="panel panel-primary">
         <div class="panel-heading">
@@ -86,24 +90,146 @@
         </div>
         <div class="panel-body">    
 
-<form class="form-horizontal" >
+<form class="form-horizontal" id="formProducto" action="/proyectoPhpSubasta/home/product" method="POST" enctype="multipart/form-data" >
+  <!-- -->
     <div class="form-group">
         <label class="control-label col-xs-3">Nombre del producto:</label>
         <div class="col-xs-9">
-            <input type="text" class="form-control"  placeholder="Nombre del producto">
+            <input type="text" class="form-control"  placeholder="Nombre del producto" id="nombre" name="nombre">
         </div>
     </div>
     
     <div class="form-group">
         <label class="control-label col-xs-3">Monto inicial:</label>
         <div class="col-xs-9">
-            <input type="text" class="form-control" placeholder="Monto inicial">
+            <input type="text" class="form-control" placeholder="Monto inicial" id="monto" name="monto">
         </div>
     </div>
     <div class="form-group">
-        <label class="control-label col-xs-3">Nickname:</label>
+        <label class="control-label col-xs-3">Fecha Final Subasta:</label>
+        <div class="col-xs-3">
+            <select class="form-control" name="day1" id="day1">
+                <option>Dia</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
+                <option>13</option>
+                <option>14</option>
+                <option>15</option>
+                <option>16</option>
+                <option>17</option>
+                <option>18</option>
+                <option>19</option>
+                <option>20</option>
+                <option>21</option>
+                <option>22</option>
+                <option>23</option>
+                <option>24</option>
+                <option>25</option>
+                <option>26</option>
+                <option>27</option>
+                <option>28</option>
+                <option>29</option>
+                <option>30</option>
+                <option>31</option>
+            </select>
+        </div>
+        <div class="col-xs-3">
+            <select class="form-control" name="month1" id="month1">
+                <option>Mes</option>
+                <option>Enero</option>
+                <option>Febero</option>
+                <option>Marzo</option>
+                <option>Abril</option>
+                <option>Mayo</option>
+                <option>Junio</option>
+                <option>Julio</option>
+                <option>Agosto</option>
+                <option>Septiembre</option>
+                <option>Octubre</option>
+                <option>Noviembre</option>
+                <option>Diciembre</option>
+            </select>
+        </div>
+        <div class="col-xs-3">
+             <input type="text" class="form-control" placeholder="Año" name="age1" id="age1">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-3">Fecha Entrega:</label>
+        <div class="col-xs-3">
+            <select class="form-control" name="day2" id="day2">
+                <option>Dia</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
+                <option>13</option>
+                <option>14</option>
+                <option>15</option>
+                <option>16</option>
+                <option>17</option>
+                <option>18</option>
+                <option>19</option>
+                <option>20</option>
+                <option>21</option>
+                <option>22</option>
+                <option>23</option>
+                <option>24</option>
+                <option>25</option>
+                <option>26</option>
+                <option>27</option>
+                <option>28</option>
+                <option>29</option>
+                <option>30</option>
+                <option>31</option>
+            </select>
+        </div>
+        <div class="col-xs-3">
+            <select class="form-control" name="month2" id="month2">
+                <option>Mes</option>
+                <option>Enero</option>
+                <option>Febero</option>
+                <option>Marzo</option>
+                <option>Abril</option>
+                <option>Mayo</option>
+                <option>Junio</option>
+                <option>Julio</option>
+                <option>Agosto</option>
+                <option>Septiembre</option>
+                <option>Octubre</option>
+                <option>Noviembre</option>
+                <option>Diciembre</option>
+            </select>
+        </div>
+        <div class="col-xs-3">
+             <input type="text" class="form-control" placeholder="Año" name="age2" id="age2">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-3">Imagen:</label>
         <div class="col-xs-9">
-           <input id="input-2" type="file" class="file" multiple="true" data-show-upload="false" accept="image/*" data-show-caption="true">
+           <input id="file" name="file" type="file" class="file" >
+           <!-- data-show-upload="false"
+           accept="image/*"
+           multiple="true"  accept="image/*" data-show-caption="true" -->
         </div>
     </div>
     
@@ -111,7 +237,7 @@
     <div class="form-group">
         <label class="control-label col-xs-3">Descripción:</label>
         <div class="col-xs-9">
-            <textarea rows="3" class="form-control" placeholder="Descripción"></textarea>
+            <textarea rows="3" class="form-control" placeholder="Descripción" id="descripcion" name="descripcion"></textarea>
         </div>
     </div>
     
@@ -120,13 +246,21 @@
     <br>
     <div class="form-group">
         <div class="col-xs-offset-3 col-xs-9">
-            <input type="submit" class="btn btn-primary" value="Enviar">
+            <input type="submit" id="submit" name="submit"class="btn btn-primary" value="Enviar">
             <input type="reset" class="btn btn-default" value="Limpiar">
         </div>
     </div>
     
 </form>
 </div>
+<?php 
+        }else{
+          ?>
+            <h2>Inicia sesion como subastador para acceder a esta sección</h2>
+          <?php 
+          
+        }
+       ?>
 </div>
 </div>
 
@@ -135,7 +269,7 @@
 
       <div class="footer-left">
 
-        <h3>Subastas M&M<span>logo</span></h3>
+        <h3>Subastas <span>M&M</span></h3>
 
         <p class="footer-links">
           <a href="#">Home</a>

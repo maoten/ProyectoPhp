@@ -1,128 +1,28 @@
 <?php
 
-namespace Milo\SaleBundle\Entity;
+require_once "Libs/Modelo.php";
+class Pujas extends Modelo{
 
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * Pujas
- *
- * @ORM\Table(name="pujas")
- * @ORM\Entity
- */
-class Pujas
-{
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $id;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="cantidad", type="integer", nullable=false)
-     */
-    private $cantidad;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="precio", type="integer", nullable=false)
-     */
-    private $precio;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="usuario", type="integer", nullable=false)
-     */
-    private $usuario;
-
-
-
-    /**
-     * Set cantidad
-     *
-     * @param integer $cantidad
-     *
-     * @return Pujas
-     */
-    public function setCantidad($cantidad)
+    function __construct()
     {
-        $this->cantidad = $cantidad;
-
-        return $this;
+        parent::__construct();
     }
 
-    /**
-     * Get cantidad
-     *
-     * @return integer
-     */
-    public function getCantidad()
+    function getPujas()
     {
-        return $this->cantidad;
+        return $this->query("select * from pujas");
     }
 
-    /**
-     * Set precio
-     *
-     * @param integer $precio
-     *
-     * @return Pujas
-     */
-    public function setPrecio($precio)
+
+    public function ingresarPujas($datos)
     {
-        $this->precio = $precio;
-
-        return $this;
+        $this->insertar($datos, "pujas");
     }
-
-    /**
-     * Get precio
-     *
-     * @return integer
-     */
-    public function getPrecio()
+    public function eliminarPujas($condiciones)
     {
-        return $this->precio;
+        $this->eliminar($condiciones);
     }
-
-    /**
-     * Set usuario
-     *
-     * @param integer $usuario
-     *
-     * @return Pujas
-     */
-    public function setUsuario($usuario)
-    {
-        $this->usuario = $usuario;
-
-        return $this;
-    }
-
-    /**
-     * Get usuario
-     *
-     * @return integer
-     */
-    public function getUsuario()
-    {
-        return $this->usuario;
-    }
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+    // public function authenticate($username,$password){
+    //     return $this->query("select * from users where username='$username' and pass='$password'");
+    // }
 }

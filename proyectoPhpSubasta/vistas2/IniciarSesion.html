@@ -18,6 +18,42 @@
       body { padding-top: 60px; }
     </style>
     <link href="/proyectoPhpSubasta/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <script>  
+    (function(d,s,id) {  
+        var js, fjs = d.getElementsByTagName(s)[0];  
+        if(d.getElementById(id)) return;  
+        js = d.createElement(s); js.id = id;  
+        js.src = "http://connect.facebook.net/es_ES/sdk.js";  
+        fjs.parentNode.insertBefore(js, fjs);  
+    }(document, 'script', 'facebook-jssdk'));  
+    window.fbAsyncInit = function() {  
+        FB.init({  
+            appId    : '1507982969501061',  
+            cookie   : true,  
+            xfbml    : true,  
+            version  : 'v2.0'  
+        });  
+    }  
+    function ingresar() {  
+        FB.login(function(response){  
+            validarUsuario();  
+        }, {scope: 'public_profile, email'});  
+    } 
+    function validarUsuario() {  
+        FB.getLoginStatus(function(response) {  
+            if(response.status == 'connected') {  
+                // alert('Bienvenido!');  
+                FB.api('/me', function(response) {  
+                alert('Hola ' + response.name);  
+            }); 
+            } else if(response.status == 'not_authorized') {  
+                alert('Debes autorizar la app!');  
+            } else {  
+                alert('Debes ingresar a tu cuenta de Facebook!');  
+            }  
+        });  
+    }  
+    </script>
   </head>
   <body background="/proyectoPhpSubasta/img/fondo7.jpg">
   	<div class="navbar navbar-fixed-top">
@@ -91,12 +127,26 @@
             <input type="password" class="form-control" name="password" id="password" placeholder="Password">
         </div>
     </div>
-    
+    <div class="form-group">
+        <label class="control-label col-xs-3">Tipo:</label>
+        <div class="col-xs-2">
+            <label class="radio-inline">
+                <input type="radio" id="radios" name="radios" value="usuario"> Usuario
+            </label>
+        </div>
+        <div class="col-xs-2">
+            <label class="radio-inline">
+                <input type="radio" id="radios" name="radios" value="proveedor"> Subastador
+            </label>
+        </div>
+    </div>
     <br>
     <div class="form-group">
         <div class="col-xs-offset-3 col-xs-9">
             <input type="submit" class="btn btn-primary" id="boton3" value="Enviar">
             <input type="reset" class="btn btn-default" value="Limpiar">
+            <button onclick="ingresar();">Ingresar con Facebook</button>  
+            <!-- <fb:login-button scope="public_profile,email" onlogin="validarUsuario();"></fb:login-button>  -->
         </div>
     </div>
 </form>
@@ -109,7 +159,7 @@
 
       <div class="footer-left">
 
-        <h3>Subastas M&M<span>logo</span></h3>
+        <h3>Subastas <span>M&M</span></h3>
 
         <p class="footer-links">
           <a href="#">Home</a>
