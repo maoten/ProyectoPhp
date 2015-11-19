@@ -16,13 +16,33 @@
     <link href="/proyectoPhpSubasta/bootstrap/css/bootstrap.min.css" rel="stylesheet">
      <link href="/proyectoPhpSubasta/bootstrap/css/bootstrap1.min.css" rel="stylesheet">
      <LINK REL="stylesheet" TYPE="text/css" HREF="/proyectoPhpSubasta/css/main.css">
+    <script src="http://www.ajaxshake.com/public/usersFiles/scripts/jquery.countdown.js"></script>
      <script src="/proyectoPhpSubasta/js/jquery-2.1.4.js" type="text/javascript" ></script>
      <script src="/proyectoPhpSubasta/js/jquery-2.1.4.min.js" type="text/javascript" ></script>
      <script src="/proyectoPhpSubasta/js/main.js" type="text/javascript" ></script>
      <script src="/proyectoPhpSubasta/js/fileinput.min.js" type="text/javascript" charset="utf-8" async defer></script>
+     <script src="/proyectoPhpSubasta/js/jquery.countdown.js"></script>
     <style>
       body { padding-top: 60px; }
+      .cntSeparator {
+      color: #000000;
+      font-size: 54px;
+      margin: 10px 7px;
+      }
+      .desc {
+      margin: 7px 3px;
+      }
+      .desc div {
+      color: #000000;
+      float: left;
+      font-family: Arial;
+      font-size: 13px;
+      font-weight: bold;
+      margin-right: 65px;
+      width: 70px;
+      }
     </style>
+  
     <link href="/proyectoPhpSubasta/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
   </head>
   <body background="/proyectoPhpSubasta/img/fondo7.jpg">
@@ -82,31 +102,106 @@
 
 <div class="panel panel-primary">
         <div class="panel-heading">
-          <h3 class="panel-title">Comprar Pujas</h3>
+          <h3 class="panel-title">Descripción del producto</h3>
         </div>
         <div class="panel-body">    
           
         <div class="span6">
            <h2>Producto</h2>
              <p>
-               <img src="img/carro1.jpg" alt="auto1" class="img-rounded">
+               <img src="/proyectoPhpSubasta/img/carro1.jpg" alt="auto1" class="img-rounded">
                Descripción del producto presentado. Descripción del producto presentado. 
                Descripción del producto presentado.
              </p>
              <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div>
-        </div>
 
+        </div>
+        
+        <div class="span3">
+          <?php 
+        if (isset($_COOKIE["chsm"])) {
+        {
+      }
+       ?>
+          <form action="/proyectoPhpSubasta/home/ofertar" method="POST">
+            <label for="">Monto:</label>
+            <input type="text" id="monto" name="monto">
+            <input type="submit" value="Ofertar">
+          </form>
+           <?php 
+        }else{
+          ?>
+            <h2>Para poder ofertar inicia sesion</h2>
+          <?php 
+          
+        }
+       ?>
+        </div>
+        </div>
+        <div style="height: 77px; overflow: hidden;" id="counter">
+          <div id="cnt_0" class="cntDigit"></div>
+          <div style="" id="cnt_1" class="cntDigit"></div>
+          <div style="float: left;" class="cntSeparator">:</div>
+          <div style="" id="cnt_3" class="cntDigit"></div>
+          <div style="" id="cnt_4" class="cntDigit"></div>
+          <div style="float: left;" class="cntSeparator">:</div>
+          <div style="" id="cnt_6" class="cntDigit"></div>
+          <div style="" id="cnt_7" class="cntDigit"></div>
+          <div style="float: left;" class="cntSeparator">:</div>
+          <div style="" id="cnt_9" class="cntDigit"></div>
+          <div style="" id="cnt_10" class="cntDigit"></div>
+        </div>
+</div>
         
 </div>
 </div>
 
 
+<script>
+// function get_time_difference(earlierDate, laterDate){
+// var nTotalDiff = laterDate.getTime() - earlierDate.getTime();
+// var oDiff = new Object();
+
+// oDiff.days = Math.floor(nTotalDiff/1000/60/60/24);
+// nTotalDiff -= oDiff.days*1000*60*60*24;
+
+// oDiff.hours = Math.floor(nTotalDiff/1000/60/60);
+// nTotalDiff -= oDiff.hours*1000*60*60;
+
+// oDiff.minutes = Math.floor(nTotalDiff/1000/60);
+// nTotalDiff -= oDiff.minutes*1000*60;
+
+// oDiff.seconds = Math.floor(nTotalDiff/1000);
+// return oDiff;
+
+// }
+// function use_time_difference(){
+// finish = new Date(2013, 02, 15, 11, 30, 00);
+// dateCurrent = new Date();
+// oDiff = get_time_difference(dateCurrent, finish);
+// oDiff.days<=9?days = '0'+oDiff.days: days = oDiff.days;
+// oDiff.hours<=9?hours = '0'+oDiff.hours: hours = oDiff.hours;
+// oDiff.minutes<=9?minutes = '0'+oDiff.minutes: minutes = oDiff.minutes;
+// oDiff.seconds<=9?seconds = '0'+oDiff.seconds: seconds = oDiff.seconds;
+// time = days + ":" + hours + ":" + minutes + ":" + seconds;
+// }
+// use_time_difference();
+$('#counter').countdown({
+stepTime: 60,
+format: 'dd:hh:mm:ss',
+startTime: time,
+digitImages: 6,
+digitWidth: 53,
+digitHeight: 77,
+image: "/proyectoPhpSubasta/img/digits.png"
+});
+</script>
+
       <footer class="footer-distributed">
 
       <div class="footer-left">
 
-        <h3>Subastas M&M<span>logo</span></h3>
+        <h3>Subastas <span>M&M</span></h3>
 
         <p class="footer-links">
           <a href="#">Home</a>

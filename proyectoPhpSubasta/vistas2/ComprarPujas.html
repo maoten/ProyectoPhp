@@ -26,7 +26,7 @@
     <link href="/proyectoPhpSubasta/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
   </head>
   <body background="/proyectoPhpSubasta/img/fondo7.jpg">
-  	<div class="navbar navbar-fixed-top">
+  <div class="navbar navbar-fixed-top">
   <div class="navbar-inverse">
     <div class="container">
       <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -78,7 +78,11 @@
 
 		</div>
 		
-
+<?php 
+        if (isset($_COOKIE["chsm"])) {
+        {
+      }
+       ?>
 
 <div class="panel panel-primary">
         <div class="panel-heading">
@@ -86,11 +90,15 @@
         </div>
         <div class="panel-body">    
 
-<form class="form-horizontal" >
+          <div class="logout">
+            <a href="/chatSystem/home/logout">Cerrar Sesion</a>
+          </div>
+
+<form class="form-horizontal" action="/proyectoPhpSubasta/home/puja" method="POST" >
     <div class="form-group">
         <label class="control-label col-xs-3">Comprar Pujas:</label>
         <div class="col-xs-9">
-        <select class="selectpicker" name="Pais"  >
+        <select class="selectpicker" name="Paquete" id="paquete" name="paquete">
             <option>60</option>
             <option>120</option>
             
@@ -99,7 +107,7 @@
     <div class="form-group">
         <label class="control-label col-xs-3">Precio Pujas:</label>
         <div class="col-xs-9">
-            <label class="control-label ">$50.000</label>
+            <label class="control-label " id="precio" name="precio">$50.000</label>
         </div>
     </div>
     
@@ -126,6 +134,14 @@
     
 </form>
 </div>
+<?php 
+        }else{
+          ?>
+            <h2>Inicia sesion por favor</h2>
+          <?php 
+          
+        }
+       ?>
 </div>
 </div>
 
@@ -134,7 +150,7 @@
 
       <div class="footer-left">
 
-        <h3>Subastas M&M<span>logo</span></h3>
+        <h3>Subastas <span>M&M</span></h3>
 
         <p class="footer-links">
           <a href="#">Home</a>

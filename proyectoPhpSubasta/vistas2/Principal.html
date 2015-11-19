@@ -1,3 +1,10 @@
+<?php  
+    $link = mysqli_connect('localhost', 'root', '', 'proyectophp');
+    $consulta = "SELECT * FROM producto ORDER BY id DESC";
+    $resultado = mysqli_query($link, $consulta);
+    $elementos = array();
+    
+?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -29,12 +36,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <a class="brand" href="/proyectoPhpSubasta/home/index">Subastas</a>
+      <a class="brand" href="http://subastasmym.byethost13.com/proyectoPhpSubasta/home/index">Subastas</a>
       <div class="nav-collapse">
         <ul class="nav nav-tabs">
           <li class="active"><a href="#">Home</a></li>
           
-          <li class="#"><a href="/proyectoPhpSubasta/home/iniciarSesion">Iniciar Sesión </a></li>
+          <li class="#"><a href="http://subastasmym.byethost13.com/proyectoPhpSubasta/home/iniciarSesion">Iniciar Sesión </a></li>
           <li class="dropdown">
           <a class="dropdown-toggle" href="#" data-toggle="dropdown">Administrar<span class="caret"></span></a>
            <ul class="dropdown-menu">
@@ -68,14 +75,28 @@
             variados productos para la subasta, una plataforma web que encontrará todo aquello que siempre ha 
             buscado y no ha tenido la suerte de encontrarlo</p>
           <p><a class="btn btn-primary btn-large">Más información</a></p>
+          <input type="hidden" name="id" value="ñlasfj">
          </div>
 		</div>
 		<div class="row-fluid">
-  			<div class="span4">
+       <?php 
+            while ($datos = mysqli_fetch_assoc($resultado)){
+              $nombre=$datos['nombre'];
+              $descripcion=$datos['descripcion'];
+              $ruta=$datos['imagen'];
+              $id=$datos['id'];
+              echo '<div class="span4"><h2>'.$nombre.'</h2><p><img src="/proyectoPhpSubasta/img/'.$ruta.'" class="img-rounded">'.$descripcion.'</p><p><input type="hidden" name="id" value="'.$id.'"><a class="btn" href="/proyectoPhpSubasta/home/descripcionProducto">View details &raquo;</a></p></div>';
+
+
+            }              
+                
+                    // echo '<li id="elemento-'.$id.'" contenteditable="true">'.$nombre.'</li>';
+       ?>
+  			<!-- <div class="span4">
    				 <h2>Producto</h2>
    					 <p>
    					   <img src="/proyectoPhpSubasta/img/carro1.jpg" alt="auto1" class="img-rounded">
-   					   Descripción del producto presentado. Descripción del producto presentado. 
+               Descripción del producto presentado. Descripción del producto presentado. 
    					   Descripción del producto presentado.
    					 </p>
     				 <p><a class="btn" href="#">View details &raquo;</a></p>
@@ -126,7 +147,7 @@
    					   Descripción del producto presentado.
    					 </p>
     				 <p><a class="btn" href="#">View details &raquo;</a></p>
-  			</div>
+  			</div> -->
 		</div>
 			</div>
 		
@@ -134,7 +155,7 @@
 
       <div class="footer-left">
 
-        <h3>Subastas M&M<span>logo</span></h3>
+        <h3>Subastas <span>M&M</span></h3>
 
         <p class="footer-links">
           <a href="#">Home</a>

@@ -95,3 +95,38 @@ div#slider figure {
   animation: 30s slidy infinite; 
 }
 
+#cnt_0{
+  height: 4620px; 
+  float: left; 
+  background: transparent url("/proyectoPhpSubasta/img/digits.png") repeat scroll 0% 0%; 
+  width: 53px; 
+  margin-top: 0px;
+}
+
+#cnt_1{
+  height: 4620px; float: left; background: transparent url("/proyectoPhpSubasta/img/digits.png") repeat scroll 0% 0%; width: 53px; margin-top: -462px;
+}
+
+#cnt_3{
+  height: 4620px; float: left; background: transparent url("/proyectoPhpSubasta/img/digits.png") repeat scroll 0% 0%; width: 53px; margin-top: -462px;
+}
+
+#cnt_4{
+  height: 4620px; float: left; background: transparent url("/proyectoPhpSubasta/img/digits.png") repeat scroll 0% 0%; width: 53px; margin-top: -924px;
+}
+
+#cnt_6{
+  height: 4620px; float: left; background: transparent url("/proyectoPhpSubasta/img/digits.png") repeat scroll 0% 0%; width: 53px; margin-top: 0px;
+}
+
+#cnt_7{
+  height: 4620px; float: left; background: transparent url("/proyectoPhpSubasta/img/digits.png") repeat scroll 0% 0%; width: 53px; margin-top: -3234px;
+}
+
+#cnt_9{
+  height: 4620px; float: left; background: transparent url("/proyectoPhpSubasta/img/digits.png") repeat scroll 0% 0%; width: 53px; margin-top: -2310px;
+}
+
+#cnt_10{
+  height: 4620px; float: left; background: transparent url("/proyectoPhpSubasta/img/digits.png") repeat scroll 0% 0%; width: 53px; margin-top: -3465px;
+}

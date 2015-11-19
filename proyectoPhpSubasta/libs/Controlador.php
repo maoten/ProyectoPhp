@@ -27,14 +27,14 @@ class Controlador{
 	protected function cargarVista($vista){
 
 		$modelo = ucfirst(strtolower($vista));
-		$urlFile = 'vistas2/'.$vista.'.html';
+		$urlFile = 'vistas2/'.$modelo.'.html';
 
 		if(file_exists($urlFile)){
 
 			require_once($urlFile);
 			return true;
 		}else{
-			echo "llego hasta aqui". $vista;
+			echo "llego hasta ". $vista;
 			return false;
 		}
 	}
